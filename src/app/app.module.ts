@@ -16,7 +16,7 @@ import { LoginModule } from './login/login.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NbThemeModule.forRoot({ name: 'cosmic' }),
+    NbThemeModule.forRoot({ name: 'golem-vii' }),
     NbLayoutModule,
     NbEvaIconsModule,
     FlexLayoutModule,

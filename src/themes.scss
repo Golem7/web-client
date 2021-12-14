@@ -1,18 +1,71 @@
 @import '~@nebular/theme/styles/theming';
 @import '~@nebular/theme/styles/themes/cosmic';
 
-$nb-themes: nb-register-theme((
+$nb-themes: nb-register-theme(
+  (
+    // add your variables here like:
+      // color-primary-100: #f2f6ff,
+      // color-primary-200: #d9e4ff,
+      // color-primary-300: #a6c1ff,
+      // color-primary-400: #598bff,
+      // color-primary-500: #3366ff,
+      // color-primary-600: #274bdb,
+      // color-primary-700: #1a34b8,
+      // color-primary-800: #102694,
+      // color-primary-900: #091c7a,
+  ),
+  cosmic,
+  cosmic
+);
 
-  // add your variables here like:
-
-  // color-primary-100: #f2f6ff,
-  // color-primary-200: #d9e4ff,
-  // color-primary-300: #a6c1ff,
-  // color-primary-400: #598bff,
-  // color-primary-500: #3366ff,
-  // color-primary-600: #274bdb,
-  // color-primary-700: #1a34b8,
-  // color-primary-800: #102694,
-  // color-primary-900: #091c7a,
-
-), cosmic, cosmic);
+$nb-themes: nb-register-theme(
+  (
+    color-primary-100: #c9fcf6,
+    color-primary-200: #95f9f4,
+    color-primary-300: #5fecef,
+    color-primary-400: #38cfe0,
+    color-primary-500: #00a8cc,
+    color-primary-600: #0083af,
+    color-primary-700: #006292,
+    color-primary-800: #004676,
+    color-primary-900: #003261,
+    color-success-100: #f1fbd1,
+    color-success-200: #e0f8a4,
+    color-success-300: #c4ea73,
+    color-success-400: #a4d54e,
+    color-success-500: #7bba1d,
+    color-success-600: #629f15,
+    color-success-700: #4c850e,
+    color-success-800: #386b09,
+    color-success-900: #2a5905,
+    color-info-100: #ccfcff,
+    color-info-200: #99f2ff,
+    color-info-300: #66e2ff,
+    color-info-400: #3fceff,
+    color-info-500: #00aeff,
+    color-info-600: #0087db,
+    color-info-700: #0065b7,
+    color-info-800: #004793,
+    color-info-900: #00337a,
+    color-warning-100: #fefccf,
+    color-warning-200: #fef89f,
+    color-warning-300: #fef26f,
+    color-warning-400: #fded4c,
+    color-warning-500: #fce411,
+    color-warning-600: #d8c10c,
+    color-warning-700: #b5a008,
+    color-warning-800: #927f05,
+    color-warning-900: #786703,
+    color-danger-100: #ffe7d6,
+    color-danger-200: #ffc9ad,
+    color-danger-300: #ffa483,
+    color-danger-400: #ff8165,
+    color-danger-500: #ff4732,
+    color-danger-600: #db2824,
+    color-danger-700: #b71922,
+    color-danger-800: #930f22,
+    color-danger-900: #7a0922,
+  ),
+  golem-vii,
+  dark
+);
