@@ -1,0 +1,13 @@
+<nb-card>
+  <nb-card-body fxLayout="column" fxLayoutAlign="space-evenly">
+    <ng-container *ngIf="userOb | async; else needLogin">
+      <button nbButton fullWidth hero status="danger" (click)="logout()">Logout</button>
+    </ng-container>
+    <ng-template #needLogin>
+      <button nbButton fullWidth hero status="primary" (click)="login('metamask')">Login with Metamask</button>
+      <button nbButton fullWidth hero status="primary" (click)="login('walletconnect')">
+        Login with WalletConnect
+      </button>
+    </ng-template>
+  </nb-card-body>
+</nb-card>
