@@ -1,5 +1,6 @@
 <nb-card>
-  <nb-card-body fxLayout="column" fxLayoutAlign="space-evenly">
+  <nb-card-body fxLayout="column" fxLayoutAlign="space-evenly center">
+    <img src="assets/logo.png" />
     <ng-container *ngIf="userOb | async; else needLogin">
       <button nbButton fullWidth hero status="danger" (click)="logout()">Logout</button>
     </ng-container>

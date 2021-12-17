@@ -1,4 +1,14 @@
 nb-card {
   min-width: 30vw;
   min-height: 20vh;
+
+  img {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 16px;
+  }
+
+  button {
+    margin: 8px;
+  }
 }
