@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Moralis } from 'moralis';
-import { from, of } from 'rxjs';
+import { of } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
+import { fromPromise } from '../../shared/utils/fromPromise';
 import { login, fetchUser } from './user.actions';
 
 @Injectable({
@@ -13,7 +14,7 @@ export class UserEffects {
     this.actions.pipe(
       ofType(login),
       mergeMap(args => {
-        return from(Moralis.Web3.authenticate(args.opt)).pipe(
+        return fromPromise(Moralis.Web3.authenticate(args.opt)).pipe(
           map(moralisUser => ({ type: fetchUser.name, payload: { moralisUser } })),
           catchError(moralisError => of({ type: fetchUser.name, payload: { moralisError } }))
         );

@@ -12,6 +12,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './ngrx/user/user.effects';
 import { userReducer } from './ngrx/user/user.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -30,6 +32,7 @@ import { userReducer } from './ngrx/user/user.reducer';
     LoginModule,
     StoreModule.forRoot({ user: userReducer }),
     EffectsModule.forRoot([UserEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [],
 })
