@@ -15,8 +15,8 @@ export class UserEffects {
       ofType(login),
       mergeMap(args => {
         return fromPromise(Moralis.Web3.authenticate(args.opt)).pipe(
-          map(moralisUser => ({ type: fetchUser.name, payload: { moralisUser } })),
-          catchError(moralisError => of({ type: fetchUser.name, payload: { moralisError } }))
+          map(moralisUser => ({ type: fetchUser.type, moralisUser })),
+          catchError(moralisError => of({ type: fetchUser.type, moralisError }))
         );
       })
     )
