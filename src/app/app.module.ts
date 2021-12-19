@@ -14,6 +14,7 @@ import { UserEffects } from './ngrx/user/user.effects';
 import { userReducer } from './ngrx/user/user.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { ToastEffects } from './ngrx/toastr/toastr.effects';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -31,7 +32,7 @@ import { environment } from '../environments/environment';
     FlexLayoutModule,
     LoginModule,
     StoreModule.forRoot({ user: userReducer }),
-    EffectsModule.forRoot([UserEffects]),
+    EffectsModule.forRoot([UserEffects, ToastEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [],
