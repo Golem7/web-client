@@ -4,7 +4,6 @@ import { fetchUser, logout } from './user.actions';
 
 export interface IUser {
   moralisUser?: Moralis.User;
-  moralisError?: Error;
 }
 
 export const initialUser: IUser = {};
@@ -14,7 +13,6 @@ export const userReducer = createReducer(
   on(fetchUser, (state, fetchResult) => ({
     ...state,
     moralisUser: fetchResult.moralisUser,
-    moralisError: fetchResult.moralisError,
   })),
-  on(logout, state => ({ ...state, moralisUser: undefined, moralisError: undefined }))
+  on(logout, state => ({ ...state, moralisUser: undefined }))
 );
