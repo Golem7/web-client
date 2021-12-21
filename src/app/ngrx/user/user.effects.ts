@@ -5,7 +5,7 @@ import { routerNavigatedAction } from '@ngrx/router-store';
 import { Store } from '@ngrx/store';
 import { Moralis } from 'moralis';
 import { EMPTY } from 'rxjs';
-import { map, mergeMap, filter, withLatestFrom } from 'rxjs/operators';
+import { map, mergeMap, filter, withLatestFrom, tap } from 'rxjs/operators';
 import { fromPromise } from '../../shared/utils/fromPromise';
 import { catchAsToastrDanger } from '../../shared/utils/rxjs-operators';
 import { IState } from '../state';
@@ -23,7 +23,8 @@ export class UserEffects {
           map(moralisUser => fetchUser({ payload: moralisUser })),
           catchAsToastrDanger
         );
-      })
+      }),
+      tap(() => this.router.navigate(['']))
     )
   );
   navigateToMainPage = createEffect(() =>
@@ -32,11 +33,9 @@ export class UserEffects {
       withLatestFrom(this.store.select('user')),
       filter(([r, user]) => r.payload.routerState.url.includes('login') && !!user.moralisUser),
       mergeMap(() => {
-        return fromPromise(this.router.navigate([''])).pipe(
-          mergeMap(() => EMPTY),
-          catchAsToastrDanger
-        );
-      })
+        return fromPromise(this.router.navigate([''])).pipe(mergeMap(() => EMPTY));
+      }),
+      catchAsToastrDanger
     )
   );
   logoutUser = createEffect(() =>
