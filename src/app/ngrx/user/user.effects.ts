@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { routerNavigatedAction } from '@ngrx/router-store';
+import { Store } from '@ngrx/store';
 import { Moralis } from 'moralis';
-import { EMPTY, of } from 'rxjs';
-import { map, mergeMap, catchError, filter } from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
+import { map, mergeMap, filter, withLatestFrom } from 'rxjs/operators';
 import { fromPromise } from '../../shared/utils/fromPromise';
-import { toastrDanger } from '../toastr/toastr.actions';
+import { catchAsToastrDanger } from '../../shared/utils/rxjs-operators';
+import { IState } from '../state';
 import { login, fetchUser, logout } from './user.actions';
 
 @Injectable({
@@ -16,21 +19,22 @@ export class UserEffects {
     this.actions.pipe(
       ofType(login),
       mergeMap(args => {
-        return fromPromise(Moralis.Web3.authenticate(args.opt)).pipe(
-          map(moralisUser => ({ type: fetchUser.type, moralisUser })),
-          catchError(err => of({ type: toastrDanger.type, args: { message: err.message } }))
+        return fromPromise(Moralis.Web3.authenticate(args.payload)).pipe(
+          map(moralisUser => fetchUser({ payload: moralisUser })),
+          catchAsToastrDanger
         );
       })
     )
   );
   navigateToMainPage = createEffect(() =>
     this.actions.pipe(
-      ofType(fetchUser),
-      filter(args => !!args?.moralisUser && this.router.url.includes('login')),
+      ofType(routerNavigatedAction),
+      withLatestFrom(this.store.select('user')),
+      filter(([r, user]) => r.payload.routerState.url.includes('login') && !!user.moralisUser),
       mergeMap(() => {
         return fromPromise(this.router.navigate([''])).pipe(
           mergeMap(() => EMPTY),
-          catchError(err => of({ type: toastrDanger.type, args: { message: err.message } }))
+          catchAsToastrDanger
         );
       })
     )
@@ -44,11 +48,11 @@ export class UserEffects {
             Moralis.Web3.cleanup();
             return EMPTY;
           }),
-          catchError(err => of({ type: toastrDanger.type, args: { message: err.message } }))
+          catchAsToastrDanger
         );
       })
     )
   );
 
-  constructor(private actions: Actions, private router: Router) {}
+  constructor(private actions: Actions, private store: Store<IState>, private router: Router) {}
 }

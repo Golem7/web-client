@@ -7,8 +7,8 @@ export interface IToastrArgs {
   config?: Partial<NbToastrConfig>;
 }
 
-export const toastrShow = createAction('Toastr show', props<{ args: IToastrArgs }>());
-export const toastrInfo = createAction('Toastr info', props<{ args: IToastrArgs }>());
-export const toastrWarning = createAction('Toastr warning', props<{ args: IToastrArgs }>());
-export const toastrPrimary = createAction('Toastr primary', props<{ args: IToastrArgs }>());
-export const toastrDanger = createAction('Toastr danger', props<{ args: IToastrArgs }>());
+export const toastrShow = createAction('Toastr show', props<{ payload: IToastrArgs }>());
+export const toastrInfo = createAction('Toastr info', props<{ payload: IToastrArgs }>());
+export const toastrWarning = createAction('Toastr warning', props<{ payload: IToastrArgs }>());
+export const toastrPrimary = createAction('Toastr primary', props<{ payload: IToastrArgs }>());
+export const toastrDanger = createAction('Toastr danger', props<{ payload: IToastrArgs }>());

@@ -12,7 +12,7 @@ export class ToastEffects {
     () =>
       this.actions.pipe(
         ofType(toastrShow),
-        tap(({ args }) => this.nbToastrService.show(args.message, args.title, args.config))
+        tap(({ payload }) => this.nbToastrService.show(payload.message, payload.title, payload.config))
       ),
     { dispatch: false }
   );
@@ -20,7 +20,7 @@ export class ToastEffects {
     () =>
       this.actions.pipe(
         ofType(toastrInfo),
-        tap(({ args }) => this.nbToastrService.info(args.message, args.title, args.config))
+        tap(({ payload }) => this.nbToastrService.info(payload.message, payload.title, payload.config))
       ),
     { dispatch: false }
   );
@@ -28,7 +28,7 @@ export class ToastEffects {
     () =>
       this.actions.pipe(
         ofType(toastrWarning),
-        tap(({ args }) => this.nbToastrService.warning(args.message, args.title, args.config))
+        tap(({ payload }) => this.nbToastrService.warning(payload.message, payload.title, payload.config))
       ),
     { dispatch: false }
   );
@@ -36,7 +36,7 @@ export class ToastEffects {
     () =>
       this.actions.pipe(
         ofType(toastrPrimary),
-        tap(({ args }) => this.nbToastrService.primary(args.message, args.title, args.config))
+        tap(({ payload }) => this.nbToastrService.primary(payload.message, payload.title, payload.config))
       ),
     { dispatch: false }
   );
@@ -44,7 +44,7 @@ export class ToastEffects {
     () =>
       this.actions.pipe(
         ofType(toastrDanger),
-        tap(({ args }) => this.nbToastrService.danger(args.message, args.title, args.config))
+        tap(({ payload }) => this.nbToastrService.danger(payload.message, payload.title, payload.config))
       ),
     { dispatch: false }
   );

@@ -12,7 +12,7 @@ export const userReducer = createReducer(
   initialUser,
   on(fetchUser, (state, fetchResult) => ({
     ...state,
-    moralisUser: fetchResult.moralisUser,
+    moralisUser: fetchResult.payload,
   })),
   on(logout, state => ({ ...state, moralisUser: undefined }))
 );
