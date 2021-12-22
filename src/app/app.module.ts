@@ -17,6 +17,7 @@ import { ToastEffects } from './ngrx/toastr/toastr.effects';
 import { LayoutModule } from './layout/layout.module';
 import { metaReducers, reducers } from './ngrx/reducers';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { ShipsModule } from './ships/ships.module';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -36,6 +37,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     FlexLayoutModule,
     LoginModule,
     LayoutModule,
+    ShipsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([UserEffects, ToastEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
