@@ -18,8 +18,4 @@ export class LoginComponent {
   public login(provider: Moralis.Web3ProviderType = 'metamask'): void {
     this.store.dispatch(login({ payload: { provider } }));
   }
-
-  public logout(): void {
-    this.store.dispatch(logout());
-  }
 }
