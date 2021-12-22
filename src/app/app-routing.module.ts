@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
 import { UserGuard } from './shared/guards/user.guard';
+import { ShipsComponent } from './ships/ships.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,17 @@ const routes: Routes = [
     component: LayoutComponent,
     canActivate: [UserGuard],
     canActivateChild: [UserGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: 'ships',
+        pathMatch: 'prefix',
+      },
+      {
+        path: 'ships',
+        component: ShipsComponent,
+      },
+    ],
   },
 ];
 

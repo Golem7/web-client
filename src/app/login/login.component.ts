@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import Moralis from 'moralis/types';
 import { map, Observable } from 'rxjs';
 import { IState } from '../ngrx/state';
-import { login, logout } from '../ngrx/user/user.actions';
+import { login } from '../ngrx/user/user.actions';
 
 @Component({
   selector: 'app-login',

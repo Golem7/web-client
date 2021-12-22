@@ -14,7 +14,11 @@
     </div>
   </nb-layout-header>
 
-  <nb-sidebar #sidebar></nb-sidebar>
+  <nb-sidebar #sidebar>
+    <nb-menu [items]="menuItems"></nb-menu>
+  </nb-sidebar>
 
-  <nb-layout-column>Layout Content</nb-layout-column>
+  <nb-layout-column>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
 </nb-layout>
