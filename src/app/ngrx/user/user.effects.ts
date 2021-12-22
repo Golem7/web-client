@@ -45,6 +45,7 @@ export class UserEffects {
         return fromPromise(Moralis.User.logOut()).pipe(
           mergeMap(() => {
             Moralis.Web3.cleanup();
+            this.router.navigate(['/login']);
             return EMPTY;
           }),
           catchAsToastrDanger

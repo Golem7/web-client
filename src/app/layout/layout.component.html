@@ -7,7 +7,9 @@
         </button>
       </div>
       <div>
-        <button nbButton outline status="warning" title="Logout"><nb-icon icon="log-out-outline"></nb-icon></button>
+        <button nbButton outline status="warning" title="Logout" (click)="logout()">
+          <nb-icon icon="log-out-outline"></nb-icon>
+        </button>
       </div>
     </div>
   </nb-layout-header>
